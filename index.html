@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#00478a" />
+  <title>Alerta365 - Documentos Legales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #00478a;
+      --primary-light: #3673ba;
+      --primary-lighter: #e6eff8;
+      --primary-gradient: linear-gradient(135deg, #003976 0%, #00478a 40%, #054c91 100%);
+      --text: #0f172a;
+      --text-secondary: #475569;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --radius: 14px;
+      --radius-sm: 10px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 12px rgba(0,71,138,0.08);
+    }
+
+    html {
+      min-height: 100%;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: var(--primary-gradient);
+      color: white;
+      box-shadow: 0 4px 20px rgba(0,71,138,0.25);
+    }
+
+    .header-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .header-logo {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+
+    .header-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+    }
+
+    .header-brand {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--primary-gradient);
+      padding: 56px 24px 72px;
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-logo {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 24px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    .hero-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 38px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      opacity: 0.75;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    /* ── Cards ── */
+    .cards {
+      max-width: 720px;
+      margin: -44px auto 0;
+      padding: 0 24px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      text-decoration: none;
+      color: var(--text);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-md), 0 8px 24px rgba(0,71,138,0.1);
+      border-color: var(--primary-light);
+      transform: translateY(-4px);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--primary-lighter);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--primary);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .card-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-top: auto;
+      padding-top: 4px;
+    }
+
+    .card-action svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover .card-action svg {
+      transform: translateX(4px);
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--text);
+      color: white;
+      padding: 32px 24px;
+      margin-top: auto;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-brand {
+      font-size: 14px;
+      font-weight: 600;
+      opacity: 0.7;
+    }
+
+    .footer-contact a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-contact a:hover {
+      color: white;
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 40px 20px 60px;
+      }
+
+      .cards {
+        margin-top: -36px;
+        padding: 0 16px 60px;
+      }
+
+      .card {
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="/logo-alerta.webp" alt="Alerta365" />
+      </div>
+      <span class="header-brand">Alerta365</span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-logo">
+        <img src="/logo-alerta.webp" alt="Alerta365" />
+      </div>
+      <h1>Documentos Legales</h1>
+      <p>Consulta nuestros documentos legales y conoce cómo protegemos tu información.</p>
+    </div>
+  </section>
+
+  <!-- Cards -->
+  <main class="cards">
+    <a href="Privacy-Policy.html" class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      </div>
+      <div class="card-title">Política de Privacidad</div>
+      <div class="card-desc">Conoce cómo recopilamos, protegemos y utilizamos tu información personal y datos de salud.</div>
+      <div class="card-action">
+        Leer documento
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </div>
+    </a>
+
+    <a href="Terms-&-Conditions.html" class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+      </div>
+      <div class="card-title">Términos y Condiciones</div>
+      <div class="card-desc">Lee los términos que regulan el uso de la plataforma para empresas registradas.</div>
+      <div class="card-action">
+        Leer documento
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </div>
+    </a>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">Alerta365 &mdash; Plataforma de Salud Ocupacional</div>
+      <div class="footer-contact">
+        <a href="mailto:arturocs.dev28@gmail.com">arturocs.dev28@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
