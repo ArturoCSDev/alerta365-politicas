@@ -3,58 +3,621 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#00478a" />
   <title>Términos y Condiciones - Alerta365</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding:1em; line-height:1.6; }
-    h1 { color: #222; }
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #00478a;
+      --primary-light: #3673ba;
+      --primary-lighter: #e6eff8;
+      --primary-gradient: linear-gradient(135deg, #003976 0%, #00478a 40%, #054c91 100%);
+      --sidebar: #003976;
+      --sidebar-accent: #054c91;
+      --text: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --radius: 14px;
+      --radius-sm: 10px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 12px rgba(0,71,138,0.08);
+      --shadow-lg: 0 10px 30px rgba(0,71,138,0.1);
+      --destructive: #e7000b;
+      --success: #16a34a;
+      --max-width: 820px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: var(--primary-gradient);
+      color: white;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 4px 20px rgba(0,71,138,0.25);
+    }
+
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .header-logo {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+
+    .header-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+    }
+
+    .header-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header-brand {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .header-subtitle {
+      font-size: 11px;
+      font-weight: 500;
+      opacity: 0.7;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--primary-gradient);
+      padding: 48px 24px 56px;
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .hero-badge svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      opacity: 0.8;
+      max-width: 520px;
+      margin: 0 auto;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    /* ── Main Content ── */
+    .main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* ── Table of Contents ── */
+    .toc {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .toc-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toc-title svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--primary);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc-counter;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 6px 24px;
+    }
+
+    .toc li {
+      counter-increment: toc-counter;
+    }
+
+    .toc li a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 10px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .toc li a::before {
+      content: counter(toc-counter, decimal-leading-zero);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-lighter);
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .toc li a:hover {
+      background: var(--primary-lighter);
+      color: var(--primary);
+    }
+
+    /* ── Section Cards ── */
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+      scroll-margin-top: 80px;
+    }
+
+    .section:hover {
+      box-shadow: var(--shadow-md);
+      border-color: #b3cee6;
+    }
+
+    .section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: var(--primary-gradient);
+      color: white;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .section h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    .section p {
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section ul {
+      list-style: none;
+      padding: 0;
+      margin: 14px 0;
+    }
+
+    .section ul li {
+      position: relative;
+      padding: 10px 14px 10px 42px;
+      color: var(--text-secondary);
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      font-size: 14px;
+      border: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+
+    .section ul li:hover {
+      border-color: var(--border);
+    }
+
+    .section ul li:last-child {
+      margin-bottom: 0;
+    }
+
+    .section ul li::before {
+      content: '';
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      width: 8px;
+      height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+
+    .section a {
+      color: var(--primary-light);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+
+    .section a:hover {
+      border-bottom-color: var(--primary-light);
+    }
+
+    .callout {
+      background: linear-gradient(135deg, #eff6ff, #e8edf8);
+      border: 1px solid var(--primary-light);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .callout svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--primary);
+      stroke-width: 2;
+      fill: none;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .callout p {
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--text);
+      color: white;
+      padding: 40px 24px;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .footer-logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .footer-logo span {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .footer-contact a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-contact a:hover {
+      color: white;
+    }
+
+    .footer-date {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .footer-divider {
+      width: 60px;
+      height: 2px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 1px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .hero {
+        padding: 32px 20px 40px;
+      }
+
+      .main {
+        padding: 24px 16px 60px;
+      }
+
+      .section {
+        padding: 24px 20px;
+      }
+
+      .toc ol {
+        grid-template-columns: 1fr;
+      }
+
+      .header-inner {
+        padding: 14px 16px;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Términos y Condiciones</h1>
-  <p>Bienvenido a <strong>Alerta365</strong> (en adelante, la "Aplicación"), desarrollada por <strong>ArturoCS</strong> (en adelante, el "Proveedor del Servicio"). El uso de esta Aplicación implica la aceptación total de los presentes Términos y Condiciones.</p>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="logo-alerta.webp" alt="Alerta365" />
+      </div>
+      <div class="header-text">
+        <span class="header-brand">Alerta365</span>
+        <span class="header-subtitle">Plataforma de Salud Ocupacional</span>
+      </div>
+    </div>
+  </header>
 
-  <h2>1. Uso privado</h2>
-  <p>La Aplicación está destinada únicamente a <strong>empresas registradas</strong>. No está disponible para el público general ni para descargas masivas.</p>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+        Documento Legal
+      </div>
+      <h1>Términos y Condiciones</h1>
+      <p>Lee los términos que regulan el uso de la plataforma Alerta365 para empresas registradas.</p>
+    </div>
+  </section>
 
-  <h2>2. Funcionalidades</h2>
-  <p>La Aplicación permite:</p>
-  <ul>
-    <li>Conexión con smartwatch para monitoreo de sueño y bienestar.</li>
-    <li>Generar reportes y análisis internos para las empresas registradas.</li>
-    <li>Acceso restringido únicamente a usuarios autorizados por la empresa contratante.</li>
-  </ul>
+  <!-- Content -->
+  <main class="main">
+    <!-- Table of Contents -->
+    <nav class="toc">
+      <div class="toc-title">
+        <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+        Contenido
+      </div>
+      <ol>
+        <li><a href="#uso-privado">Uso privado</a></li>
+        <li><a href="#funcionalidades">Funcionalidades</a></li>
+        <li><a href="#datos">Datos recopilados</a></li>
+        <li><a href="#responsabilidades">Responsabilidades del usuario</a></li>
+        <li><a href="#limitacion">Limitación de responsabilidad</a></li>
+        <li><a href="#actualizaciones">Actualizaciones</a></li>
+        <li><a href="#terminacion">Terminación</a></li>
+        <li><a href="#cambios">Cambios en los Términos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ol>
+    </nav>
 
-  <h2>3. Datos recopilados</h2>
-  <p>La Aplicación procesa datos personales, de salud y técnicos tal como se detalla en la <a href="URL_POLITICA_PRIVACIDAD" target="_blank">Política de Privacidad</a>. Al utilizar la Aplicación, aceptas dicho tratamiento.</p>
+    <p style="color: var(--text-secondary); margin-bottom: 28px; font-size: 14px;">
+      Bienvenido a <strong>Alerta365</strong> (en adelante, la "Aplicación"), desarrollada por <strong>ArturoCS</strong> (en adelante, el "Proveedor del Servicio"). El uso de esta Aplicación implica la aceptación total de los presentes Términos y Condiciones.
+    </p>
 
-  <h2>4. Responsabilidades del usuario</h2>
-  <ul>
-    <li>Mantener la confidencialidad de tus credenciales de acceso.</li>
-    <li>Utilizar la Aplicación únicamente para los fines permitidos.</li>
-    <li>No realizar ingeniería inversa, modificaciones no autorizadas ni usos indebidos.</li>
-  </ul>
+    <!-- 1. Uso privado -->
+    <section class="section" id="uso-privado">
+      <div class="section-number">1</div>
+      <h2>Uso privado</h2>
+      <p>La Aplicación está destinada únicamente a <strong>empresas registradas</strong>. No está disponible para el público general ni para descargas masivas.</p>
+    </section>
 
-  <h2>5. Limitación de responsabilidad</h2>
-  <p>El Proveedor del Servicio no se hace responsable de:</p>
-  <ul>
-    <li>Daños derivados del mal uso de la Aplicación.</li>
-    <li>Problemas ocasionados por el smartwatch o dispositivos de terceros.</li>
-    <li>Fallas en la conexión a Internet o en servicios externos.</li>
-  </ul>
+    <!-- 2. Funcionalidades -->
+    <section class="section" id="funcionalidades">
+      <div class="section-number">2</div>
+      <h2>Funcionalidades</h2>
+      <p>La Aplicación permite:</p>
+      <ul>
+        <li>Conexión con smartwatch para monitoreo de sueño y bienestar.</li>
+        <li>Generar reportes y análisis internos para las empresas registradas.</li>
+        <li>Acceso restringido únicamente a usuarios autorizados por la empresa contratante.</li>
+      </ul>
+    </section>
 
-  <h2>6. Actualizaciones</h2>
-  <p>El Proveedor del Servicio podrá actualizar la Aplicación para mejorar su funcionamiento. Algunas actualizaciones pueden ser obligatorias para mantener el uso de la App.</p>
+    <!-- 3. Datos recopilados -->
+    <section class="section" id="datos">
+      <div class="section-number">3</div>
+      <h2>Datos recopilados</h2>
+      <p>La Aplicación procesa datos personales, de salud y técnicos tal como se detalla en la <a href="Privacy-Policy.html">Política de Privacidad</a>. Al utilizar la Aplicación, aceptas dicho tratamiento.</p>
+    </section>
 
-  <h2>7. Terminación</h2>
-  <p>El acceso a la Aplicación podrá ser revocado si se detecta uso indebido o incumplimiento de estos Términos.</p>
+    <!-- 4. Responsabilidades del usuario -->
+    <section class="section" id="responsabilidades">
+      <div class="section-number">4</div>
+      <h2>Responsabilidades del usuario</h2>
+      <ul>
+        <li>Mantener la confidencialidad de tus credenciales de acceso.</li>
+        <li>Utilizar la Aplicación únicamente para los fines permitidos.</li>
+        <li>No realizar ingeniería inversa, modificaciones no autorizadas ni usos indebidos.</li>
+      </ul>
+    </section>
 
-  <h2>8. Cambios en los Términos</h2>
-  <p>Podemos actualizar estos Términos y Condiciones en cualquier momento. Los cambios se publicarán en esta misma página y entrarán en vigor desde su publicación.</p>
+    <!-- 5. Limitación de responsabilidad -->
+    <section class="section" id="limitacion">
+      <div class="section-number">5</div>
+      <h2>Limitación de responsabilidad</h2>
+      <p>El Proveedor del Servicio no se hace responsable de:</p>
+      <ul>
+        <li>Daños derivados del mal uso de la Aplicación.</li>
+        <li>Problemas ocasionados por el smartwatch o dispositivos de terceros.</li>
+        <li>Fallas en la conexión a Internet o en servicios externos.</li>
+      </ul>
+    </section>
 
-  <h2>9. Contacto</h2>
-  <p>Si tienes dudas sobre estos Términos y Condiciones, escríbenos a:  
-  <a href="mailto:arturocs.dev28@gmail.com">arturocs.dev28@gmail.com</a></p>
+    <!-- 6. Actualizaciones -->
+    <section class="section" id="actualizaciones">
+      <div class="section-number">6</div>
+      <h2>Actualizaciones</h2>
+      <p>El Proveedor del Servicio podrá actualizar la Aplicación para mejorar su funcionamiento. Algunas actualizaciones pueden ser obligatorias para mantener el uso de la App.</p>
+    </section>
 
-  <p><em>Última actualización: 30 de agosto de 2025</em></p>
+    <!-- 7. Terminación -->
+    <section class="section" id="terminacion">
+      <div class="section-number">7</div>
+      <h2>Terminación</h2>
+      <p>El acceso a la Aplicación podrá ser revocado si se detecta uso indebido o incumplimiento de estos Términos.</p>
+      <div class="callout">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        <p>El incumplimiento de estos términos puede resultar en la suspensión inmediata del acceso sin previo aviso.</p>
+      </div>
+    </section>
+
+    <!-- 8. Cambios en los Términos -->
+    <section class="section" id="cambios">
+      <div class="section-number">8</div>
+      <h2>Cambios en los Términos</h2>
+      <p>Podemos actualizar estos Términos y Condiciones en cualquier momento. Los cambios se publicarán en esta misma página y entrarán en vigor desde su publicación.</p>
+    </section>
+
+    <!-- 9. Contacto -->
+    <section class="section" id="contacto">
+      <div class="section-number">9</div>
+      <h2>Contacto</h2>
+      <p>Si tienes dudas sobre estos Términos y Condiciones, escríbenos a: <a href="mailto:arturocs.dev28@gmail.com">arturocs.dev28@gmail.com</a></p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="footer-logo-icon">
+          <img src="logo-alerta.webp" alt="Alerta365" />
+        </div>
+        <span>Alerta365</span>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-contact">
+        <a href="mailto:arturocs.dev28@gmail.com">arturocs.dev28@gmail.com</a>
+      </div>
+      <div class="footer-date">Última actualización: 14 de marzo de 2026</div>
+    </div>
+  </footer>
 </body>
 </html>
